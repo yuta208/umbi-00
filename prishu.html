@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Prishu ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Georgia,serif;
+    background:#050208;
+    color:white;
+}
+
+/* =========================
+   SCENES
+========================= */
+
+.scene{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    transition:opacity 1.2s ease, transform 1.2s ease;
+}
+
+.hidden{
+    opacity:0 !important;
+    pointer-events:none !important;
+}
+
+/* =========================
+   STARS
+========================= */
+
+.stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:white;
+    opacity:.5;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.4);
+    }
+}
+
+/* =========================
+   LAYER 1
+========================= */
+
+#giftScene{
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #421457 0%,
+            #1c0829 38%,
+            #08030d 75%,
+            #020103 100%
+        );
+}
+
+.intro{
+    position:absolute;
+    top:10%;
+    width:100%;
+    text-align:center;
+    z-index:5;
+    padding:0 20px;
+}
+
+.intro h1{
+    font-size:clamp(30px,8vw,48px);
+    font-weight:normal;
+    letter-spacing:2px;
+    text-shadow:
+        0 0 10px #d16aff,
+        0 0 30px #a12de0;
+}
+
+.intro p{
+    margin-top:12px;
+    font-size:15px;
+    color:#d9bfdc;
+}
+
+/* =========================
+   GIFT AREA
+========================= */
+
+.gift-area{
+    position:absolute;
+    left:50%;
+    top:48%;
+    width:210px;
+    height:270px;
+    transform:translate(-50%,-50%);
+    z-index:10;
+    cursor:pointer;
+}
+
+/* =========================
+   KEY
+========================= */
+
+.key{
+    position:absolute;
+    left:50%;
+    top:0;
+
+    width:100px;
+    height:100px;
+
+    transform:
+        translate(-50%,0)
+        scale(.25);
+
+    opacity:0;
+
+    z-index:20;
+
+    filter:
+        drop-shadow(0 0 8px #ffe88b)
+        drop-shadow(0 0 20px #d8a82d);
+
+    transition:
+        transform 1.5s cubic-bezier(.2,.9,.2,1),
+        opacity .8s ease;
+}
+
+/*
+   The key rises ABOVE the gift.
+   It never sits inside the box.
+*/
+
+.gift-area.open .key{
+    opacity:1;
+
+    transform:
+        translate(-50%,-95px)
+        scale(1);
+}
+
+/* Key ring */
+
+.key-ring{
+    position:absolute;
+    left:2px;
+    top:24px;
+
+    width:43px;
+    height:43px;
+
+    border:7px solid #ffd968;
+    border-radius:50%;
+}
+
+/* Key shaft */
+
+.key-shaft{
+    position:absolute;
+    left:39px;
+    top:42px;
+
+    width:55px;
+    height:9px;
+
+    border-radius:6px;
+    background:#ffd968;
+}
+
+/* Key teeth */
+
+.key-tooth1{
+    position:absolute;
+    left:70px;
+    top:42px;
+
+    width:9px;
+    height:22px;
+
+    background:#ffd968;
+}
+
+.key-tooth2{
+    position:absolute;
+    left:55px;
+    top:42px;
+
+    width:9px;
+    height:15px;
+
+    background:#ffd968;
+}
+
+/* =========================
+   GIFT BOX
+========================= */
+
+.gift{
+    position:absolute;
+
+    left:25px;
+    bottom:5px;
+
+    width:160px;
+    height:105px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b327f,
+            #53164f
+        );
+
+    border-radius:8px;
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.55),
+        0 0 30px rgba(188,72,255,.2);
+
+    z-index:5;
+}
+
+.gift::after{
+    content:"";
+
+    position:absolute;
+    left:68px;
+    top:0;
+
+    width:24px;
+    height:100%;
+
+    background:#e6a9ff;
+    opacity:.8;
+}
+
+/* =========================
+   GIFT LID
+========================= */
+
+.lid{
+    position:absolute;
+
+    left:15px;
+    top:125px;
+
+    width:180px;
+    height:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b03c8d,
+            #641b60
+        );
+
+    border-radius:7px;
+
+    z-index:10;
+
+    transform-origin:left bottom;
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.45);
+}
+
+.lid::after{
+    content:"";
+
+    position:absolute;
+    left:78px;
+    top:0;
+
+    width:24px;
+    height:100%;
+
+    background:#e6a9ff;
+}
+
+/* =========================
+   BOW
+========================= */
+
+.bow{
+    position:absolute;
+
+    left:81px;
+    top:96px;
+
+    width:50px;
+    height:35px;
+
+    z-index:15;
+
+    transition:
+        transform 1s ease;
+}
+
+.bow::before,
+.bow::after{
+    content:"";
+
+    position:absolute;
+
+    width:31px;
+    height:23px;
+
+    background:#e6a9ff;
+
+    border-radius:
+        50%
+        50%
+        10%
+        50%;
+}
+
+.bow::before{
+    transform:rotate(25deg);
+}
+
+.bow::after{
+    right:0;
+    transform:
+        scaleX(-1)
+        rotate(25deg);
+}
+
+/* =========================
+   OPEN GIFT
+========================= */
+
+.gift-area.open .lid{
+    transform:
+        translateY(-75px)
+        rotate(-12deg);
+}
+
+.gift-area.open .bow{
+    transform:
+        translateY(-75px)
+        rotate(-12deg);
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.key-message{
+    position:absolute;
+
+    bottom:10%;
+
+    width:100%;
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+    z-index:30;
+
+    pointer-events:none;
+
+    padding:0 20px;
+}
+
+.gift-area.open ~ .key-message{
+    opacity:1;
+}
+
+.key-message h2{
+    font-size:22px;
+    font-weight:normal;
+
+    color:#ffe2ff;
+
+    text-shadow:
+        0 0 15px #c95dff;
+}
+
+.key-message p{
+    margin-top:8px;
+
+    font-size:14px;
+
+    color:#cdb8d2;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+    position:absolute;
+
+    color:#ff9eea;
+
+    font-size:15px;
+
+    opacity:.45;
+
+    animation:
+        floatHeart 6s linear infinite;
+}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:
+            translateY(100vh)
+            scale(.7);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:.6;
+    }
+
+    100%{
+        transform:
+            translateY(-10vh)
+            scale(1.2);
+
+        opacity:0;
+    }
+}
+
+/* =========================
+   LAYER 2
+========================= */
+
+#doorScene{
+    background:
+        radial-gradient(
+            circle at center,
+            #341342 0%,
+            #16091d 35%,
+            #07030b 70%,
+            #010103 100%
+        );
+}
+
+/* Magical glow */
+
+.magic-glow{
+    position:absolute;
+
+    width:45vw;
+    height:75vh;
+
+    max-width:500px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(210,111,255,.35),
+            rgba(112,35,160,.15),
+            transparent 70%
+        );
+
+    filter:blur(25px);
+
+    opacity:.55;
+
+    animation:
+        glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse{
+
+    from{
+        transform:scale(.95);
+        opacity:.4;
+    }
+
+    to{
+        transform:scale(1.05);
+        opacity:.7;
+    }
+}
+
+/* =========================
+   DOOR TITLE
+========================= */
+
+.door-title{
+    position:absolute;
+
+    top:8%;
+
+    width:100%;
+
+    text-align:center;
+
+    padding:0 20px;
+
+    z-index:5;
+}
+
+.door-title h1{
+    font-size:
+        clamp(27px,7vw,44px);
+
+    font-weight:normal;
+
+    letter-spacing:1px;
+
+    text-shadow:
+        0 0 12px #d36bff,
+        0 0 35px #8e27b7;
+}
+
+.door-title p{
+    margin-top:10px;
+
+    color:#cdb9d3;
+
+    font-size:14px;
+}
+
+/* =========================
+   DOOR FRAME
+========================= */
+
+.door-area{
+    position:relative;
+
+    width:min(86vw,390px);
+    height:min(65vh,540px);
+
+    perspective:1800px;
+
+    z-index:10;
+}
+
+.door-frame{
+    position:absolute;
+
+    inset:0;
+
+    padding:12px;
+
+    border:
+        3px solid #8d6a4e;
+
+    border-bottom:0;
+
+    border-radius:
+        150px 150px 0 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #21140e,
+            #090604
+        );
+
+    box-shadow:
+        0 0 0 5px #24150f,
+        0 0 40px rgba(0,0,0,.8),
+        0 0 80px rgba(181,72,255,.18);
+}
+
+.door-frame::before{
+    content:"";
+
+    position:absolute;
+
+    inset:7px;
+
+    border:
+        1px solid #b28a62;
+
+    border-radius:
+        140px 140px 0 0;
+
+    pointer-events:none;
+}
+
+/* =========================
+   DOUBLE DOORS
+========================= */
+
+.door-left,
+.door-right{
+    position:absolute;
+
+    top:14px;
+    bottom:0;
+
+    width:50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #130b08,
+            #392018,
+            #1b0e0b
+        );
+
+    border:
+        2px solid #7e5941;
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform 2.2s cubic-bezier(.65,0,.25,1);
+
+    box-shadow:
+        inset 0 0 40px rgba(0,0,0,.8);
+}
+
+.door-left{
+    left:14px;
+
+    transform-origin:left center;
+
+    border-right:
+        1px solid #a77b57;
+}
+
+.door-right{
+    right:14px;
+
+    transform-origin:right center;
+
+    border-left:
+        1px solid #a77b57;
+}
+
+/* =========================
+   DOOR PANELS
+========================= */
+
+.door-left::before,
+.door-right::before{
+    content:"";
+
+    position:absolute;
+
+    inset:25px 18px;
+
+    border:
+        2px solid rgba(178,135,93,.5);
+
+    border-radius:
+        80px 80px 10px 10px;
+}
+
+.door-left::after,
+.door-right::after{
+    content:"";
+
+    position:absolute;
+
+    inset:60px 40px;
+
+    border:
+        1px solid rgba(203,159,111,.3);
+
+    border-radius:
+        60px 60px 8px 8px;
+}
+
+/* =========================
+   HEART EMBLEM
+========================= */
+
+.heart-emblem{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:110px;
+    height:100px;
+
+    z-index:30;
+
+    pointer-events:none;
+
+    transition:opacity .5s ease;
+}
+
+.heart-shape{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:70px;
+    height:70px;
+
+    transform:
+        translate(-50%,-42%)
+        rotate(-45deg);
+
+    border:
+        3px solid #d5a75c;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(211,90,255,.15),
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 15px rgba(215,167,92,.35);
+}
+
+.heart-shape::before,
+.heart-shape::after{
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    border:
+        3px solid #d5a75c;
+
+    border-radius:50%;
+
+    background:transparent;
+}
+
+.heart-shape::before{
+    top:-38px;
+    left:0;
+}
+
+.heart-shape::after{
+    left:38px;
+    top:0;
+}
+
+/* =========================
+   KEYHOLE
+========================= */
+
+.keyhole{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:48px;
+    height:70px;
+
+    z-index:40;
+
+    cursor:pointer;
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+.keyhole:hover{
+    filter:
+        drop-shadow(0 0 12px #ffd86c);
+}
+
+.keyhole-circle{
+    width:35px;
+    height:35px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#030303;
+
+    border:
+        3px solid #e3b969;
+
+    box-shadow:
+        0 0 15px rgba(255,213,110,.45);
+}
+
+.keyhole-slot{
+    width:13px;
+    height:29px;
+
+    margin:
+        -3px auto 0;
+
+    background:#030303;
+
+    border:
+        2px solid #e3b969;
+
+    border-top:0;
+
+    border-radius:
+        0 0 7px 7px;
+}
+
+/* =========================
+   OPEN DOOR
+========================= */
+
+.door-area.open .door-left{
+    transform:
+        rotateY(-105deg);
+}
+
+.door-area.open .door-right{
+    transform:
+        rotateY(105deg);
+}
+
+.door-area.open .heart-emblem{
+    opacity:0;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-screen{
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:100;
+
+    transition:
+        opacity 1.5s ease;
+}
+
+.video-screen.show{
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+#loveVideo{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    background:#000;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .intro{
+        top:9%;
+    }
+
+    .gift-area{
+        top:48%;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+    }
+
+    .door-area{
+        width:86vw;
+        height:65vh;
+    }
+
+    .door-title{
+        top:7%;
+    }
+
+    .door-title h1{
+        font-size:30px;
+    }
+
+    .key-message{
+        bottom:8%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LAYER 1 — GIFT
+===================================================== -->
+
+<section
+    id="giftScene"
+    class="scene">
+
+    <div
+        class="stars"
+        id="stars1">
+    </div>
+
+    <div class="intro">
+
+        <h1>
+            For Prishu ❤️
+        </h1>
+
+        <p>
+            Something is waiting for you...
+        </p>
+
+    </div>
+
+
+    <div
+        class="gift-area"
+        id="giftArea">
+
+
+        <!-- KEY -->
+
+        <div class="key">
+
+            <div class="key-ring"></div>
+
+            <div class="key-shaft"></div>
+
+            <div class="key-tooth1"></div>
+
+            <div class="key-tooth2"></div>
+
+        </div>
+
+
+        <!-- GIFT -->
+
+        <div class="lid"></div>
+
+        <div class="bow"></div>
+
+        <div class="gift"></div>
+
+    </div>
+
+
+    <div class="key-message">
+
+        <h2>
+            The key to my heart ❤️
+        </h2>
+
+        <p>
+            Take it... there's somewhere it belongs.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LAYER 2 — DOOR
+===================================================== -->
+
+<section
+    id="doorScene"
+    class="scene hidden">
+
+    <div
+        class="stars"
+        id="stars2">
+    </div>
+
+
+    <div class="magic-glow"></div>
+
+
+    <div class="door-title">
+
+        <h1>
+            One last thing...
+        </h1>
+
+        <p>
+            Maybe the key was meant for this door.
+        </p>
+
+    </div>
+
+
+    <div
+        class="door-area"
+        id="doorArea">
+
+
+        <div class="door-frame">
+
+
+            <!-- LEFT DOOR -->
+
+            <div
+                class="door-left"
+                id="doorLeft">
+            </div>
+
+
+            <!-- RIGHT DOOR -->
+
+            <div
+                class="door-right"
+                id="doorRight">
+            </div>
+
+
+            <!-- HEART -->
+
+            <div class="heart-emblem">
+
+                <div class="heart-shape"></div>
+
+            </div>
+
+
+            <!-- KEYHOLE -->
+
+            <div
+                class="keyhole"
+                id="keyhole">
+
+                <div class="keyhole-circle"></div>
+
+                <div class="keyhole-slot"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VIDEO
+===================================================== -->
+
+<div
+    class="video-screen"
+    id="videoScreen">
+
+    <video
+        id="loveVideo"
+        controls
+        playsinline>
+
+        <source
+            src="Video-52475.mp4"
+            type="video/mp4">
+
+        Your browser does not support video playback.
+
+    </video>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   VIDEO FILE
+===================================================== */
+
+const VIDEO_FILE = "Video-52475.mp4";
+
+document
+    .querySelector("#loveVideo source")
+    .src = VIDEO_FILE;
+
+
+/* =====================================================
+   STARS
+===================================================== */
+
+function createStars(containerId){
+
+    const container =
+        document.getElementById(containerId);
+
+    for(let i = 0; i < 90; i++){
+
+        const star =
+            document.createElement("div");
+
+        star.className = "star";
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+        star.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        container.appendChild(star);
+    }
+}
+
+createStars("stars1");
+createStars("stars2");
+
+
+/* =====================================================
+   HEARTS
+===================================================== */
+
+function createHearts(){
+
+    const scene =
+        document.getElementById("giftScene");
+
+    for(let i = 0; i < 14; i++){
+
+        const heart =
+            document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = "♥";
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
+        heart.style.animationDelay =
+            Math.random() * 6 + "s";
+
+        heart.style.animationDuration =
+            4 + Math.random() * 5 + "s";
+
+        scene.appendChild(heart);
+    }
+}
+
+createHearts();
+
+
+/* =====================================================
+   GIFT INTERACTION
+===================================================== */
+
+const giftArea =
+    document.getElementById("giftArea");
+
+const giftScene =
+    document.getElementById("giftScene");
+
+const doorScene =
+    document.getElementById("doorScene");
+
+let giftOpened = false;
+
+giftArea.addEventListener(
+    "click",
+    () => {
+
+        if(giftOpened) return;
+
+        giftOpened = true;
+
+        /* Open gift */
+
+        giftArea.classList.add("open");
+
+
+        /*
+           Let the key rise first.
+        */
+
+        setTimeout(() => {
+
+            giftScene.style.transform =
+                "scale(1.12)";
+
+            giftScene.style.opacity =
+                "0";
+
+        },2300);
+
+
+        /*
+           Move to door layer.
+        */
+
+        setTimeout(() => {
+
+            giftScene.classList.add("hidden");
+
+            doorScene.classList.remove("hidden");
+
+            doorScene.style.opacity = "0";
+
+            doorScene.style.transform =
+                "scale(.96)";
+
+            requestAnimationFrame(() => {
+
+                doorScene.style.opacity =
+                    "1";
+
+                doorScene.style.transform =
+                    "scale(1)";
+
+            });
+
+        },3400);
+
+    }
+);
+
+
+/* =====================================================
+   DOOR INTERACTION
+===================================================== */
+
+const keyhole =
+    document.getElementById("keyhole");
+
+const doorArea =
+    document.getElementById("doorArea");
+
+const videoScreen =
+    document.getElementById("videoScreen");
+
+const video =
+    document.getElementById("loveVideo");
+
+let doorOpened = false;
+
+
+keyhole.addEventListener(
+    "click",
+    () => {
+
+        if(doorOpened) return;
+
+        doorOpened = true;
+
+
+        /*
+           Key-turn effect.
+        */
+
+        keyhole.style.transform =
+            "translate(-50%,-50%) rotate(15deg)";
+
+        keyhole.style.filter =
+            "drop-shadow(0 0 20px #ffd86c)";
+
+
+        /*
+           Open doors.
+        */
+
+        setTimeout(() => {
+
+            doorArea.classList.add("open");
+
+        },600);
+
+
+        /*
+           Wait for doors to open,
+           then reveal video.
+        */
+
+        setTimeout(() => {
+
+            videoScreen.classList.add("show");
+
+            video.currentTime = 0;
+
+            video.play().catch(() => {
+
+                /*
+                   Some mobile browsers block
+                   autoplay. Controls remain available.
+                */
+
+                console.log(
+                    "Autoplay was blocked by the browser."
+                );
+
+            });
+
+        },3000);
+
+    }
+);
+
+</script>
+
+</body>
+</html>
